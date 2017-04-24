@@ -1,5 +1,7 @@
 defmodule Elplan.AuthController do
   use Elplan.Web, :controller
+  alias Elplan.Repo
+  alias Elplan.User
 
   def index(conn, %{"provider" => provider}) do
     redirect conn, external: authorize_url!(provider)
@@ -8,6 +10,7 @@ defmodule Elplan.AuthController do
   def callback(conn, %{"provider" => provider, "code" => code}) do
     client = get_token!(provider, code)
     user = get_user!(provider, client)
+    save_user(user)
 
     conn
     |> put_session(:current_user, user)
@@ -29,7 +32,18 @@ defmodule Elplan.AuthController do
 
   defp get_user!("google", client) do
     %OAuth2.Response{body: user} = OAuth2.Client.get!(client, "https://www.googleapis.com/oauth2/v2/userinfo")
-    %{name: user["name"], avatar: user["picture"]}
+    %{name: user["name"], avatar: user["picture"], email: user["email"]}
+  end
+
+  defp save_user(user) do
+    case User
+    |> where(email: ^user.email)
+    |> Repo.one do
+      nil -> %User{email: user.email}
+      dbuser -> dbuser
+    end
+    |> User.changeset(user)
+    |> Repo.insert_or_update
   end
 
 end
