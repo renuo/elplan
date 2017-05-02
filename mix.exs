@@ -10,7 +10,9 @@ defmodule Elplan.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      aliases: aliases(),
-     deps: deps()]
+     deps: deps(),
+     test_coverage: [tool: ExCoveralls],
+     preferred_cli_env: ["coveralls": :test, "coveralls.detail": :test, "coveralls.post": :test, "coveralls.html": :test]]
   end
 
   # Configuration for the OTP application.
@@ -39,6 +41,8 @@ defmodule Elplan.Mixfile do
      {:phoenix_slime, "~> 0.8.0"},
      {:oauth2, "~> 0.9"},
      {:gettext, "~> 0.11"},
+     {:credo, "~> 0.7.3"},
+     {:excoveralls, "~> 0.6.3", only: :test},
      {:cowboy, "~> 1.0"}]
   end
 
@@ -51,6 +55,6 @@ defmodule Elplan.Mixfile do
   defp aliases do
     ["ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
      "ecto.reset": ["ecto.drop", "ecto.setup"],
-     "test": ["ecto.create --quiet", "ecto.migrate", "test"]]
+     "test": ["ecto.create --quiet", "ecto.migrate", "test --cover"]]
   end
 end
