@@ -8,6 +8,7 @@ const extractSass = new ExtractTextPlugin({
 });
 
 var config = {
+  devtool: 'inline-source-map',
   entry: {
     'app': [
       './web/static/js/app.js',
@@ -46,7 +47,7 @@ var config = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['es2015']
+            presets: ['es2015', 'react']
           }
         }
       },

@@ -19,3 +19,33 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+
+import React from "react"
+import ReactDOM from "react-dom"
+import { HashRouter as Router, Route, Link } from 'react-router-dom'
+import Home from "./home"
+import About from "./about"
+import Navbar from "./navbar"
+
+class App extends React.Component {
+  render() {
+    return (
+      <Router>
+        <div>
+          <nav>
+            <Navbar/>
+          </nav>
+          <div className="body">
+            <Route exact path='/' component={Home} />
+            <Route path='/about' component={About} />
+          </div>
+        </div>
+      </Router>
+    )
+  }
+}
+
+ReactDOM.render(
+  <App/>,
+  document.getElementById("elplan-app")
+);
