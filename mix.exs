@@ -40,6 +40,7 @@ defmodule Elplan.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:phoenix_slime, "~> 0.8.0"},
      {:oauth2, "~> 0.9"},
+     {:ja_serializer, "~> 0.12.0"},
      {:gettext, "~> 0.11"},
      {:credo, "~> 0.7.3"},
      {:excoveralls, "~> 0.6.3", only: :test},
