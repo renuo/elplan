@@ -1,0 +1,28 @@
+sudo: false
+language: elixir
+elixir: 1.4.2
+otp_release: 19.0
+addons:
+  postgresql: '9.4'
+env:
+  global:
+    - MIX_ENV=test
+before_install:
+  - nvm install 7
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+before_script:
+  - "$HOME/.yarn/bin/yarn"
+script:
+  - mix credo || true
+  - mix test
+  - "$HOME/.yarn/bin/yarn test -- --coverage"
+deploy:
+  provider: heroku
+  api_key:
+    secure: j0fxaQgQ1wSJRnmdV/DjDMkzAQm3bgE2g0b/jpg63W3wist/otBftUAbCSbBduXNda9dzKSyMd8wobixytsdSL2ANT4AFALrCQqHlIL0kSwkt6YMMzcjaq7e7Qv+auBVvNrNjgtcSIU5f9A1LapjyCcQTRKx1kntuS5xfWT0pgQPbDjGWO0nWeh7fRklX86EhiGG+hQJgVKZBTka9agcNh44Em1+2NyU1R24yRIqrZMU1b6aPLyiRJXSv+bjRHeqHjk7jeUNqoUxC0GGA22L/cOL0Wl4/+RtWbVlU/mjOyryYsGk3iuy+oXBw1JLctjbKud647fWQXwwTm2DMsFGEBVpdkrx2zYeAJWhqsLRng8ZdJmYX/8SsyuR549m3b27xCdH4YSBPxs8dacqb3zZNhJ9dc1HPMKyf0uv8Swmvo3m4QqS+un/lPzspUaREawVs6qXpelxztEU2wn2b6x8HtAvkIdzNWWaCuKNrMqrm0wyfslnkq0rZW67i/jpGpUWoPEeaKxEdGlE8922zMkOuaL7k+5do5OqolEuzOEzpzLnyfHvlbJoFzjz+aJqb3//eR7KEZu+SXs76heWbLgO33GHe5k9SVyZ8gj5MssauFpzxFHsUWnm0y7wMSpLJ5dByFbVcG2kQ7xo1x8V1kTHZBmSjKJJcADSFTlL0fvhzUs=
+  app:
+    develop: elplan-develop
+  run:
+    - mix ecto.migrate
+  on:
+    repo: renuo/elplan

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd $phoenix_dir
+
+NODE_ENV=production webpack -p
+mix "${phoenix_ex}.digest"
