@@ -12,20 +12,20 @@ defmodule Elplan.Router do
 
   pipeline :api do
     plug :accepts, ["json-api"]
-    plug Elplan.Plugs.Authentication
   end
 
   scope "/", Elplan do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
-    get "/auth/:provider", AuthController, :index
-    get "/auth/:provider/callback", AuthController, :callback
-    delete "/auth/logout", AuthController, :logout
+    get "/auth/:provider/callback", PageController, :index, as: :auth
+    get "/*path", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Elplan do
-  #   pipe_through :api
-  # end
+  scope "/api", Elplan do
+    pipe_through :api
+    scope "/v1" do
+      post "/authorization", AuthorizationController, :index
+    end
+  end
 end
