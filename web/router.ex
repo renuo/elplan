@@ -18,14 +18,14 @@ defmodule Elplan.Router do
   scope "/", Elplan do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
-    get "/auth/:provider", AuthController, :index
-    get "/auth/:provider/callback", AuthController, :callback
-    delete "/auth/logout", AuthController, :logout
+    get "/*path", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Elplan do
-  #   pipe_through :api
-  # end
+  scope "/api", Elplan do
+    pipe_through :api
+    scope "/v1" do
+      get "/authorization", AuthorizationController, :index
+    end
+  end
 end

@@ -1,9 +1,8 @@
+#elplan-app
 nav
   = if @current_user do
     div
       |Hello #{@current_user.name} |
-      = link "Logout", to: auth_path(@conn, :logout), method: :delete
+      = link "Logout", to: "/auth", method: :delete
   - else
-    = link "Login with Google", to: auth_path(@conn, :index, "google")
-h1 El Plan
-#elplan-app
+    = link "Login with Google", to: "/auth/google"

@@ -22,25 +22,21 @@ import "phoenix_html"
 
 import React from "react"
 import ReactDOM from "react-dom"
-import { HashRouter as Router, Route, Link } from 'react-router-dom'
-import Home from "./home"
-import About from "./about"
-import Navbar from "./navbar"
+import { Provider } from 'react-redux'
+import { ConnectedRouter } from 'connected-react-router'
+
+import store, { history } from './store'
+import Main from "./main"
+
 
 class App extends React.Component {
   render() {
     return (
-      <Router>
-        <div>
-          <nav>
-            <Navbar/>
-          </nav>
-          <div className="body">
-            <Route exact path='/' component={Home} />
-            <Route path='/about' component={About} />
-          </div>
-        </div>
-      </Router>
+      <Provider store={ store }>
+        <ConnectedRouter history={ history } store={ store }>
+          <Main store={ store }/>
+        </ConnectedRouter>
+      </Provider>
     )
   }
 }
