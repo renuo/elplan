@@ -12,12 +12,12 @@ defmodule Elplan.Router do
 
   pipeline :api do
     plug :accepts, ["json-api"]
-    plug Elplan.Plugs.Authentication
   end
 
   scope "/", Elplan do
     pipe_through :browser # Use the default browser stack
 
+    get "/auth/:provider/callback", PageController, :index, as: :auth
     get "/*path", PageController, :index
   end
 
@@ -25,7 +25,7 @@ defmodule Elplan.Router do
   scope "/api", Elplan do
     pipe_through :api
     scope "/v1" do
-      get "/authorization", AuthorizationController, :index
+      post "/authorization", AuthorizationController, :index
     end
   end
 end

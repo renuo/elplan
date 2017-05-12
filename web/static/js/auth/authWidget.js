@@ -17,7 +17,7 @@ class AuthWidget extends React.Component {
   render() {
     if (this.props.user) {
       return (
-        <div>Hello, {this.props.user.firstName}</div>
+        <div>Hello, {this.props.user.name}</div>
       );
     } else {
       return (

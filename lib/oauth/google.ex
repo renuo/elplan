@@ -14,7 +14,7 @@ defmodule Google do
       site: "https://accounts.google.com",
       authorize_url: "/o/oauth2/auth",
       token_url: "/o/oauth2/token",
-      redirect_uri: Helpers.auth_url(Elplan.Endpoint, :callback, "google")
+      redirect_uri: Helpers.auth_url(Elplan.Endpoint, :index, "google")
     ]
   end
 
