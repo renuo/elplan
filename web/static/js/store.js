@@ -1,9 +1,11 @@
 import { applyMiddleware, createStore, compose } from 'redux';
 import createHistory from 'history/createBrowserHistory';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
-import rootReducer from './reducers';
 
-const defaultState = {
+import rootReducer from './reducers';
+import { loadState, saveState } from './services/localStorage';
+
+const defaultState = loadState() || {
   user: null
 };
 
@@ -16,5 +18,11 @@ const store = createStore(
   defaultState,
   composeEnhancers(applyMiddleware(middleware))
 );
+
+store.subscribe(() => {
+  saveState({
+    user: store.getState().user
+  });
+});
 
 export default store;
