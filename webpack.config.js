@@ -45,11 +45,7 @@ var config = {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [['es2015', { modules: false }], 'react'],
-            plugins: [require('babel-plugin-transform-object-rest-spread')]
-          }
+          loader: 'babel-loader'
         }
       },
       {
