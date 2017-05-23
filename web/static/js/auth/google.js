@@ -12,18 +12,17 @@ export class GoogleCallback extends React.Component {
     const code = new URLSearchParams(this.props.location.search).get('code')
     axios
       .post('/api/v1/authorization', { code, provider: 'google' })
-      .then(response => {
+      .then((response) => {
         this.props.userLogin('mytoken', response.data.data)
       })
-      .catch(() => console.error('Error in HTTP call', arguments))
+      .catch((...rest) => console.error('Error in HTTP call', rest))
   }
 
   render () {
     if (this.props.user) {
-      return <Redirect to='/' />
-    } else {
-      return <div>Google callback</div>
+      return <Redirect to="/" />
     }
+    return <div>Google callback</div>
   }
 }
 
@@ -37,6 +36,4 @@ function mapDispatchToProps (dispatch) {
   return bindActionCreators(actionCreators, dispatch)
 }
 
-GoogleCallback = withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(GoogleCallback)
-)
+GoogleCallback = withRouter(connect(mapStateToProps, mapDispatchToProps)(GoogleCallback))
