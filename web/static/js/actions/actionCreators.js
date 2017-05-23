@@ -1,6 +1,6 @@
-export const USER_LOGIN = 'USER_LOGIN';
+export const USER_LOGIN = 'USER_LOGIN'
 
-export function userLogin(token, user) {
+export function userLogin (token, user) {
   return {
     type: USER_LOGIN,
     payload: {

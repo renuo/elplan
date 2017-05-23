@@ -11,7 +11,7 @@
 //
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
-import "phoenix_html"
+import 'phoenix_html'
 
 // Import local files
 //
@@ -20,28 +20,24 @@ import "phoenix_html"
 
 // import socket from "./socket"
 
-import React from "react"
-import ReactDOM from "react-dom"
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 
 import store, { history } from './store'
-import Main from "./main"
-
+import Main from './main'
 
 class App extends React.Component {
-  render() {
+  render () {
     return (
-      <Provider store={ store }>
-        <ConnectedRouter history={ history } store={ store }>
-          <Main store={ store }/>
+      <Provider store={store}>
+        <ConnectedRouter history={history} store={store}>
+          <Main store={store} />
         </ConnectedRouter>
       </Provider>
     )
   }
 }
 
-ReactDOM.render(
-  <App/>,
-  document.getElementById("elplan-app")
-);
+ReactDOM.render(<App />, document.getElementById('elplan-app'))

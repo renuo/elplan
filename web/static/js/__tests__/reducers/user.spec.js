@@ -1,7 +1,7 @@
-import reducer from '../../reducers/user';
+import reducer from '../../reducers/user'
 
-describe('user reducer', function() {
-  it('returns the default state', function() {
-    expect(reducer(undefined, {})).toBe(null);
-  });
-});
+describe('user reducer', () => {
+  it('returns the default state', () => {
+    expect(reducer(undefined, {})).toBe(null)
+  })
+})
