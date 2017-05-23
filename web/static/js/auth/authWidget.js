@@ -1,44 +1,43 @@
-import React from "react"
-import { Button } from "react-bootstrap"
-import { bindActionCreators } from "redux"
-import { connect } from "react-redux"
+import React from 'react'
+import { Button } from 'react-bootstrap'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 import * as actionCreators from '../actions/actionCreators'
 
 class AuthWidget extends React.Component {
-  componentDidMount() {
+  componentDidMount () {}
 
+  redirectToGoogle () {
+    window.location.href =
+      'https://accounts.google.com/o/oauth2/v2/auth?' +
+      'scope=openid%20email%20profile&redirect_uri=' +
+      encodeURIComponent(location.origin + '/auth/google/callback') +
+      '&response_type=code&' +
+      'client_id=330918691596-4jqcn7tdjv6kk8ub8qmg7le0mfu5b9t1.apps.googleusercontent.com'
   }
 
-  redirectToGoogle() {
-    window.location.href = "https://accounts.google.com/o/oauth2/v2/auth?"
-      + "scope=openid%20email%20profile&redirect_uri="
-      + encodeURIComponent(location.origin + '/auth/google/callback')
-      + "&response_type=code&"
-      + "client_id=330918691596-4jqcn7tdjv6kk8ub8qmg7le0mfu5b9t1.apps.googleusercontent.com"
-  }
-
-  render() {
+  render () {
     if (this.props.user) {
-      return (
-        <div>Hello, {this.props.user.name}</div>
-      );
+      return <div>Hello, {this.props.user.name}</div>
     } else {
       return (
-        <Button className="btn-outline-primary" onClick={ this.redirectToGoogle }>Login with Google</Button>
-      );
+        <Button className='btn-outline-primary' onClick={this.redirectToGoogle}>
+          Login with Google
+        </Button>
+      )
     }
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {
     user: state.user
   }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return bindActionCreators(actionCreators, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthWidget);
+export default connect(mapStateToProps, mapDispatchToProps)(AuthWidget)
