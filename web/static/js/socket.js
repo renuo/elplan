@@ -5,7 +5,11 @@
 // and connect at the socket path in "lib/my_app/endpoint.ex":
 import { Socket } from 'phoenix'
 
-let socket = new Socket('/socket', { params: { token: window.userToken } })
+// We disable eslint rules in this file, since it doesn't have a functional approach
+/* eslint-disable better/no-new, fp/no-unused-expression, fp/no-nil, better/explicit-return */
+/* eslint-disable no-console */
+
+const socket = new Socket('/socket', { params: { token: window.userToken } })
 
 // When you connect, you'll often need to authenticate the client.
 // For example, imagine you have an authentication plug, `MyAuth`,
@@ -54,13 +58,13 @@ let socket = new Socket('/socket', { params: { token: window.userToken } })
 socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel('topic:subtopic', {})
+const channel = socket.channel('topic:subtopic', {})
 channel
   .join()
-  .receive('ok', resp => {
+  .receive('ok', (resp) => {
     console.log('Joined successfully', resp)
   })
-  .receive('error', resp => {
+  .receive('error', (resp) => {
     console.log('Unable to join', resp)
   })
 

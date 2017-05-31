@@ -28,16 +28,14 @@ import { ConnectedRouter } from 'connected-react-router'
 import store, { history } from './store'
 import Main from './main'
 
-class App extends React.Component {
-  render () {
-    return (
-      <Provider store={store}>
-        <ConnectedRouter history={history} store={store}>
-          <Main store={store} />
-        </ConnectedRouter>
-      </Provider>
-    )
-  }
+function App (props) {
+  return (
+    <Provider store={store}>
+      <ConnectedRouter history={history} store={store}>
+        <Main store={store} />
+      </ConnectedRouter>
+    </Provider>
+  )
 }
 
-ReactDOM.render(<App />, document.getElementById('elplan-app'))
+ReactDOM.render(<App />, document.getElementById('elplan-app')) // eslint-disable-line fp/no-unused-expression

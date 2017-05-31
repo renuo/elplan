@@ -6,7 +6,7 @@ import rootReducer from './reducers'
 import { loadState, saveState } from './services/localStorage'
 
 const defaultState = loadState() || {
-  user: null
+  user: false
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
@@ -19,10 +19,11 @@ const store = createStore(
   composeEnhancers(applyMiddleware(middleware))
 )
 
-store.subscribe(() => {
+// eslint-disable-next-line fp/no-unused-expression
+store.subscribe(() =>
   saveState({
     user: store.getState().user
   })
-})
+)
 
 export default store

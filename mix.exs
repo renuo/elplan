@@ -42,7 +42,7 @@ defmodule Elplan.Mixfile do
      {:oauth2, "~> 0.9"},
      {:ja_serializer, "~> 0.12.0"},
      {:gettext, "~> 0.11"},
-     {:credo, "~> 0.7.3"},
+     {:credo, "~> 0.8.0"},
      {:excoveralls, "~> 0.6.3", only: :test},
      {:cowboy, "~> 1.0"}]
   end

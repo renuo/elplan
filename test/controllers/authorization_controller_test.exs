@@ -4,8 +4,8 @@ defmodule Elplan.AuthorizationControllerTest do
   describe "unauthorized" do
     @tag :skip
     test "GET /api/v1/authorization", %{conn: conn} do
-      response = build_conn
-                 |> get(authorization_path(build_conn, :index))
+      response = build_conn()
+                 |> get(authorization_path(build_conn(), :index))
                  |> json_response(401)
       assert response =~ "Unauthorized"
     end

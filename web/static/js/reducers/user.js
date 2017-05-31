@@ -1,6 +1,6 @@
 import { USER_LOGIN } from '../actions/actionCreators'
 
-export default function user (state = null, action) {
+export default function user (state = {}, action) {
   switch (action.type) {
     case USER_LOGIN:
       return {
@@ -10,6 +10,6 @@ export default function user (state = null, action) {
         email: action.payload.user.attributes.email
       }
     default:
-      return state
   }
+  return state
 }
