@@ -43,7 +43,7 @@ defmodule Elplan.Mixfile do
      {:ja_serializer, "~> 0.12.0"},
      {:gettext, "~> 0.11"},
      {:credo, "~> 0.8.0"},
-     {:excoveralls, "~> 0.6.3", only: :test},
+     {:excoveralls, "~> 0.7.0", only: :test},
      {:cowboy, "~> 1.0"}]
   end
 
