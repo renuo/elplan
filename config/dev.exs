@@ -45,3 +45,6 @@ config :elplan, Elplan.Repo,
 config :elplan, Google,
   client_id: "330918691596-4jqcn7tdjv6kk8ub8qmg7le0mfu5b9t1.apps.googleusercontent.com",
   client_secret: "pj7KAuW-pyhG4ppuA8OpJ0sh"
+
+config :guardian, Guardian,
+  secret_key: "vtDN9nDVsuka+KuEXvSdED5vqQGRXxp3+5xbbNOR37NUaXIehU/o7Qak1oN5biQI"

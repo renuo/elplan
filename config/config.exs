@@ -7,7 +7,8 @@ use Mix.Config
 
 # General application configuration
 config :elplan,
-  ecto_repos: [Elplan.Repo]
+  ecto_repos: [Elplan.Repo],
+  oauth_client: OAuth2.Client
 
 # Configures the endpoint
 config :elplan, Elplan.Endpoint,
@@ -34,6 +35,14 @@ config :phoenix, :format_encoders,
 config :mime, :types, %{
   "application/vnd.api+json" => ["json-api"]
 }
+
+# Configure Guardian
+config :guardian, Guardian,
+  issuer: "Elplan",
+  verify_issuer: true,
+  ttl: { 30, :days },
+  allowed_drift: 2000,
+  serializer: Elplan.Serializer
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

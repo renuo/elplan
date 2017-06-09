@@ -10,6 +10,11 @@ defmodule Elplan.Router do
     plug Elplan.Plugs.Authentication
   end
 
+  pipeline :api_auth do
+    plug Guardian.Plug.VerifyHeader, realm: "Bearer"
+    plug Guardian.Plug.LoadResource
+  end
+
   pipeline :api do
     plug :accepts, ["json-api"]
   end
@@ -23,7 +28,7 @@ defmodule Elplan.Router do
 
   # Other scopes may use custom stacks.
   scope "/api", Elplan do
-    pipe_through :api
+    pipe_through [:api, :api_auth]
     scope "/v1" do
       post "/authorization", AuthorizationController, :index
     end

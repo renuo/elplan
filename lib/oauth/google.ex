@@ -8,6 +8,8 @@ defmodule Google do
   alias OAuth2.Strategy.AuthCode
   alias Elplan.Router.Helpers
 
+  @oauth_client Application.fetch_env!(:elplan, :oauth_client)
+
   defp config do
     [
       strategy: Google,
@@ -23,15 +25,19 @@ defmodule Google do
   def client do
     Application.get_env(:elplan, Google)
     |> Keyword.merge(config())
-    |> OAuth2.Client.new()
+    |> @oauth_client.new()
   end
 
   def authorize_url!(params \\ []) do
-    OAuth2.Client.authorize_url!(client(), params)
+    @oauth_client.authorize_url!(client(), params)
   end
 
   def get_token!(params \\ [], headers \\ []) do
-    OAuth2.Client.get_token!(client(), params, headers)
+    @oauth_client.get_token!(client(), params, headers)
+  end
+
+  def userinfo!(client) do
+    @oauth_client.get!(client, "https://www.googleapis.com/oauth2/v2/userinfo")
   end
 
   # Strategy Callbacks
