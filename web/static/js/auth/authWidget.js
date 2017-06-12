@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Button } from 'react-bootstrap/lib/Button'
+import { Button } from 'react-foundation'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -8,8 +8,8 @@ import * as actionCreators from '../actions/actionCreators'
 
 function AuthWidget (props) {
   return props.user
-    ? <div>Hello, {props.user.name}</div>
-    : <Button className="btn-outline-primary" onClick={redirectToGoogle}>Login with Google</Button>
+    ? <div>Hello, {props.user.name} - <a role="button" onClick={props.userLogout}>Logout</a></div>
+    : <Button onClick={redirectToGoogle}>Login with Google</Button>
 }
 
 AuthWidget.propTypes = {
@@ -20,7 +20,8 @@ AuthWidget.propTypes = {
       name: PropTypes.string,
       email: PropTypes.string
     })
-  ])
+  ]),
+  userLogout: PropTypes.func.isRequired
 }
 
 AuthWidget.defaultProps = {

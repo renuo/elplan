@@ -1,4 +1,4 @@
-import { USER_LOGIN } from '../actions/actionCreators'
+import { USER_LOGIN, USER_LOGOUT } from '../actions/actionCreators'
 
 export default function user (state = {}, action) {
   switch (action.type) {
@@ -9,6 +9,8 @@ export default function user (state = {}, action) {
         name: action.payload.user.attributes.name,
         email: action.payload.user.attributes.email
       }
+    case USER_LOGOUT:
+      return false
     default:
   }
   return state

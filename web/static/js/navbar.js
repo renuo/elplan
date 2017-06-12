@@ -1,33 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Row, Column, TopBar, TopBarTitle, TopBarRight, Menu, MenuItem } from 'react-foundation'
+
 import { AuthWidget } from './auth'
 
-export default () => (
-  <nav className="navbar navbar-light navbar-toggleable-md bg-faded">
-    <button
-      className="navbar-toggler navbar-toggler-right"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span className="navbar-toggler-icon" />
-    </button>
-    <Link className="navbar-brand" to="/">
-      El Plan
-    </Link>
-    <div className="collapse navbar-collapse">
-      <ul className="navbar-nav mr-auto">
-        <li className="nav-item">
-          <Link to="/" className="nav-link">Home</Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/about" className="nav-link">About</Link>
-        </li>
-      </ul>
-      <AuthWidget />
-    </div>
-  </nav>
-)
+export default () =>
+  (<TopBar className="navbar">
+    <Row>
+      <Column>
+        <TopBarTitle className="navbar__title"><Link to="/">El Plan</Link></TopBarTitle>
+        <TopBarRight className="navbar__right">
+          <Menu>
+            <MenuItem>
+              <Link to="/">Home</Link>
+            </MenuItem>
+            <MenuItem>
+              <Link to="/about">About</Link>
+            </MenuItem>
+            <MenuItem>
+              <AuthWidget />
+            </MenuItem>
+          </Menu>
+        </TopBarRight>
+      </Column>
+    </Row>
+  </TopBar>)
