@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap/lib/Button'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
