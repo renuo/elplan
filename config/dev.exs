@@ -11,14 +11,13 @@ config :elplan, Elplan.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [yarn: ["watch"]]
+  watchers: [yarn: ["dev-server"]]
 
 
 # Watch static and templates for browser reloading.
 config :elplan, Elplan.Endpoint,
   live_reload: [
     patterns: [
-      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
       ~r{web/views/.*(ex)$},
       ~r{web/controllers/.*(ex)$},

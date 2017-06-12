@@ -22,20 +22,25 @@ import 'phoenix_html'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'connected-react-router'
+import { AppContainer } from 'react-hot-loader'
+import App from './containers/app'
 
-import store, { history } from './store'
-import Main from './main'
-
-function App (props) {
-  return (
-    <Provider store={store}>
-      <ConnectedRouter history={history} store={store}>
-        <Main store={store} />
-      </ConnectedRouter>
-    </Provider>
+/* eslint-disable fp/no-unused-expression */
+// eslint-disable-next-line fp/no-nil, better/explicit-return
+const render = (Component) => {
+  ReactDOM.render(
+    <AppContainer>
+      <Component />
+    </AppContainer>,
+    document.getElementById('elplan-app')
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('elplan-app')) // eslint-disable-line fp/no-unused-expression
+render(App)
+
+// Hot Module Replacement API
+// eslint-disable-next-line better/no-ifs
+if (module.hot) {
+  module.hot.accept('./containers/app', () => render(App))
+}
+/* eslint-enable fp/no-unused-expression */

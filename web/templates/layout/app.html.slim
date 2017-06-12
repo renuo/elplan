@@ -13,4 +13,7 @@ html lang="en"
   body
     = render @view_module, @view_template, assigns
 
-    script src="#{static_path(@conn, "/js/app.js")}"
+    = if Mix.env == :dev do
+      script src='http://localhost:4002/js/app.js'
+    - else
+      script src="#{static_path(@conn, "/js/app.js")}"

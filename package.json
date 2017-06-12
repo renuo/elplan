@@ -6,7 +6,8 @@
     "lint": "eslint web/static/**/*.js",
     "precommit": "lint-staged",
     "test": "jest --config jest.config.json",
-    "watch": "webpack --watch-stdin --progress --color"
+    "watch": "webpack --watch-stdin --progress --color",
+    "dev-server": "webpack-dev-server --port 4002 --stdin"
   },
   "lint-staged": {
     "linters": {
@@ -26,6 +27,7 @@
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.0",
     "react-dom": "^15.5.4",
+    "react-hot-loader": "next",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
@@ -64,6 +66,7 @@
     "sass-loader": "^6.0.3",
     "style-loader": "^0.18.1",
     "url-loader": "^0.5.8",
-    "webpack": "^2.6.1"
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
   }
 }
