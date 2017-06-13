@@ -1,27 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Row, Column, TopBar, TopBarTitle, TopBarRight, Menu, MenuItem } from 'react-foundation'
+import { Nav, NavContent, NavItem } from 'react-blazecss'
 
 import { AuthWidget } from './auth'
 
 export default () =>
-  (<TopBar className="navbar">
-    <Row>
-      <Column>
-        <TopBarTitle className="navbar__title"><Link to="/">El Plan</Link></TopBarTitle>
-        <TopBarRight className="navbar__right">
-          <Menu>
-            <MenuItem>
-              <Link to="/">Home</Link>
-            </MenuItem>
-            <MenuItem>
-              <Link to="/about">About</Link>
-            </MenuItem>
-            <MenuItem>
-              <AuthWidget />
-            </MenuItem>
-          </Menu>
-        </TopBarRight>
-      </Column>
-    </Row>
-  </TopBar>)
+  (<Nav inline shadow="higher" animate position="top" fixed>
+    <NavContent>El Plan</NavContent>
+    <Link to="/"><NavItem>Home</NavItem></Link>
+    <NavItem><Link to="/about">About</Link></NavItem>
+    <NavItem right bStyle="primary"><AuthWidget /></NavItem>
+  </Nav>)

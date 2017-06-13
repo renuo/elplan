@@ -40,7 +40,7 @@ var config = {
         use: extractSass.extract({
           use: [
             { loader: "css-loader" },
-            { loader: "sass-loader", options: { includePaths: ["node_modules/foundation-sites/scss"] } }
+            { loader: "sass-loader" }
           ],
           fallback: "style-loader"
         })
