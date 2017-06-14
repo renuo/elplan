@@ -1,13 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import { Nav, NavContent, NavItem } from 'react-blazecss'
 
 import { AuthWidget } from './auth'
+import { Icon, NavLink } from './widgets'
 
-export default () =>
+export default connect(state => ({ user: state.user }))(props =>
   (<Nav inline shadow="higher" animate position="top" fixed>
     <NavContent>El Plan</NavContent>
-    <Link to="/"><NavItem>Home</NavItem></Link>
-    <NavItem><Link to="/about">About</Link></NavItem>
-    <NavItem right bStyle="primary"><AuthWidget /></NavItem>
+    <NavLink to="/">Home</NavLink>
+    <NavLink to="/about">About</NavLink>
+    <NavContent right><AuthWidget /></NavContent>
+    {props.user
+      ? <NavLink to="/account" right>
+        <Icon name="person" /> {props.user.name}
+      </NavLink>
+      : ''}
   </Nav>)
+)

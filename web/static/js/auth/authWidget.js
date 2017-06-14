@@ -1,15 +1,20 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Button } from 'react-blazecss'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { Button } from 'react-blazecss'
 
 import * as actionCreators from '../actions/actionCreators'
+import Icon from '../widgets/icon'
 
 function AuthWidget (props) {
   return props.user
-    ? <div>Hello, {props.user.name} - <a role="button" onClick={props.userLogout}>Logout</a></div>
-    : <Button onClick={redirectToGoogle}>Login with Google</Button>
+    ? <Button onClick={props.userLogout} ghost bStyle="error">
+      <Icon name="account-logout" /> Logout
+      </Button>
+    : <Button onClick={redirectToGoogle} ghost bStyle="primary">
+      <Icon name="account-login" /> Login with Google
+      </Button>
 }
 
 AuthWidget.propTypes = {

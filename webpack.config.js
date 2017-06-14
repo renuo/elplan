@@ -40,7 +40,7 @@ var config = {
         use: extractSass.extract({
           use: [
             { loader: "css-loader" },
-            { loader: "sass-loader" }
+            { loader: "sass-loader", options: { includePaths: ["node_modules"] } }
           ],
           fallback: "style-loader"
         })
@@ -53,7 +53,7 @@ var config = {
         }
       },
       {
-        test: /\.eot$/,
+        test: /\.(eot|woff|ttf|otf|svg)$/,
         use: {
           loader: 'url-loader'
         }
