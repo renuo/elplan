@@ -1,3 +1,4 @@
 import React from 'react'
+import { H1 } from 'react-blazecss'
 
-export default props => <h1>Home</h1>
+export default props => <H1>Home</H1>

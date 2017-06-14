@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Nav, NavContent, NavItem } from 'react-blazecss'
+import { Nav, NavContent } from 'react-blazecss'
 
 import { AuthWidget } from './auth'
 import { Icon, NavLink } from './widgets'
 
 export default connect(state => ({ user: state.user }))(props =>
-  (<Nav inline shadow="higher" animate position="top" fixed>
+  (<Nav inline animate className="u-high" fixed>
     <NavContent>El Plan</NavContent>
     <NavLink to="/">Home</NavLink>
     <NavLink to="/about">About</NavLink>
