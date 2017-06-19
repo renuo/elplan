@@ -1,5 +1,10 @@
 {
-  "presets": [["env", { "modules": false }], "react"],
+  "presets": [["env", {
+    "modules": false,
+    "targets": {
+      "browsers": ["last 2 versions", ">5% in CH"]
+    }
+  }], "react"],
   "plugins": ["transform-object-rest-spread", "react-hot-loader/babel"],
   "env": {
     "test": {
