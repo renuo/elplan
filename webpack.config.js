@@ -54,9 +54,15 @@ var config = {
         }
       },
       {
-        test: /\.(eot|woff|ttf|otf|svg)$/,
+        test: /\.(eot|woff|ttf|otf)$/,
         use: {
           loader: 'url-loader'
+        }
+      },
+      {
+        test: /\.svg$/,
+        use: {
+          loader: 'svg-inline-loader'
         }
       }
     ]

@@ -1,3 +1,8 @@
 /* This file is for your main application css. */
-$iconic-font-path: '../../../node_modules/open-iconic/font/fonts/';
-@import "open-iconic/font/css/open-iconic.scss"
+.icon {
+  width: 16px;
+  height: 16px;
+  fill: white;
+  margin: 3px 3px;
+  vertical-align: middle;
+}

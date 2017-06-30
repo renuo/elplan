@@ -5,12 +5,11 @@ import { Route } from 'react-router-dom'
 import GoogleCallback from './google'
 import AuthWidget from './authWidget'
 
-const Auth = props => (
-  <div>
+const Auth = props =>
+  (<div>
     <h1>Auth</h1>
     <Route path={`${props.match.path}/google/callback`} component={GoogleCallback} />
-  </div>
-)
+  </div>)
 
 Auth.propTypes = {
   match: PropTypes.shape({

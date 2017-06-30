@@ -6,8 +6,8 @@ import About from './about'
 import Auth from './auth'
 import Navbar from './navbar'
 
-export default props => (
-  <div className="container">
+export default props =>
+  (<div className="container">
     <header className="header">
       <Navbar />
     </header>
@@ -16,5 +16,4 @@ export default props => (
       <Route path="/about" component={About} />
       <Route path="/auth" component={Auth} />
     </main>
-  </div>
-)
+  </div>)
